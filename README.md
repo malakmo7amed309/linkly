@@ -20,7 +20,7 @@ Serverless links. `src/codec.js` compresses the URL with the browser's built-in 
 
 ## Stack
 
-React 19, Tailwind CSS 4, Vite (single-file build), `qrcode-generator`. Fonts: Space Grotesk and JetBrains Mono.
+Preact, Tailwind CSS 4, Vite (single-file build), `qrcode-generator`. Fonts: Space Grotesk and JetBrains Mono.
 
 ## Run locally
 
