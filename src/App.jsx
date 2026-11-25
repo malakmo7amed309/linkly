@@ -6,7 +6,7 @@ const KEY = 'linkly:v1'
 const load = () => { try { return JSON.parse(localStorage.getItem(KEY)) || [] } catch { return [] } }
 const baseUrl = () => location.origin + location.pathname
 const DAY = 86400000
-const SAMPLE = 'https://www.example-store.com/collections/summer-sale/products/linen-shirt-sand?utm_source=instagram&utm_medium=social&utm_campaign=summer-sale-2026&utm_content=story-swipe-up&utm_term=linen-shirt&ref=instagram-story&variant=48213377001&discount=SUMMER2026&currency=EGP&lang=en&session=a1b2c3d4e5f6'
+const SAMPLE = 'https://www.example-store.com/collections/summer-sale/products/linen-shirt-sand?utm_source=instagram&utm_medium=social&utm_campaign=summer-sale-2026&utm_content=story-swipe-up&utm_term=linen-shirt&ref=instagram-story&variant=48213377001&discount=SUMMER2026&currency=EGP&lang=en&filters=color:sand,color:beige,color:white,size:m,size:l,size:xl,material:linen,material:cotton&sort=best-selling&collection=summer-sale&return_to=/collections/summer-sale/products/linen-shirt-sand?variant=48213377001'
 
 function useHashCode() {
   const [code, setCode] = useState(() => location.hash.replace(/^#\/?/, ''))
