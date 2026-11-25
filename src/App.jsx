@@ -6,7 +6,7 @@ const KEY = 'linkly:v1'
 const load = () => { try { return JSON.parse(localStorage.getItem(KEY)) || [] } catch { return [] } }
 const baseUrl = () => location.origin + location.pathname
 const DAY = 86400000
-const SAMPLE = 'https://developer.mozilla.org/en-US/docs/Web/API/CompressionStream?utm_source=newsletter&utm_medium=email&utm_campaign=web-platform-weekly'
+const SAMPLE = 'https://www.example-store.com/collections/summer-sale/products/linen-shirt-sand?utm_source=instagram&utm_medium=social&utm_campaign=summer-sale-2026&utm_content=story-swipe-up&utm_term=linen-shirt&ref=instagram-story&variant=48213377001&discount=SUMMER2026&currency=EGP&lang=en&session=a1b2c3d4e5f6'
 
 function useHashCode() {
   const [code, setCode] = useState(() => location.hash.replace(/^#\/?/, ''))
@@ -121,7 +121,7 @@ export default function App() {
         <section className="grid lg:grid-cols-[1.1fr_1fr] gap-8 items-start">
           <div>
             <h1 className="text-5xl md:text-7xl font-bold leading-[0.92] tracking-tight">The link <span className="bg-lime px-2">is</span> the database.</h1>
-            <p className="mt-5 text-lg max-w-md">Linkly packs your destination into the short link itself. Nothing is stored on a server, so links work for anyone, on any device, forever.</p>
+            <p className="mt-5 text-lg max-w-md">Linkly packs your destination, compressed, into the link itself. Nothing is stored on a server, so links work for anyone, on any device, forever.</p>
           </div>
           <form onSubmit={shorten} className="brut p-5 bg-white">
             <label htmlFor="url" className="mono text-xs font-bold tracking-widest">PASTE A LONG LINK</label>
@@ -143,14 +143,14 @@ export default function App() {
         {result && (
           <section className="brut mt-8 p-5 md:p-6 bg-sky/30 grid md:grid-cols-[1fr_auto] gap-6" aria-live="polite">
             <div className="min-w-0">
-              <p className="mono text-xs font-bold tracking-widest">YOUR SHORT LINK</p>
+              <p className="mono text-xs font-bold tracking-widest">YOUR LINK</p>
               <p className="mono mt-2 break-all text-sm md:text-base font-bold bg-white border-[3px] border-ink p-3" data-testid="short">{result.short}</p>
               <div className="mt-3 flex flex-wrap gap-3 items-center">
                 <button onClick={() => copy(result.short, 'result')} className="brut-sm press bg-lime px-4 py-2 font-bold">{copied === 'result' ? 'Copied!' : 'Copy'}</button>
                 <a href={result.short} target="_blank" rel="noopener" className="brut-sm press bg-white px-4 py-2 font-bold">Open preview</a>
-                <span className="mono text-xs">{result.saved > 0 ? `${result.saved} characters shorter than the original` : `Original is already short, so this one is ${-result.saved} characters longer`}</span>
+                <span className="mono text-xs">{result.saved > 0 ? `${result.saved} characters shorter than the original address` : `Short originals pack to something longer, so this one is ${-result.saved} characters longer`}</span>
               </div>
-              <p className="mt-3 text-sm max-w-md">Tip: tags and long query strings compress best. The preview page checks the destination for warning signs before redirecting.</p>
+              <p className="mt-3 text-sm max-w-md">Tip: long addresses with many tracking tags compress best. The preview page checks the destination for warning signs before redirecting.</p>
             </div>
             <Qr text={result.short} />
           </section>
