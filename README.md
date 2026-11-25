@@ -1,6 +1,6 @@
 # Linkly
 
-A link shortener with no backend. The destination is packed into the short link itself, so there is nothing to host, nothing to sign up for, and nothing that can go down.
+A link packer with no backend. The destination is packed into the short link itself, so there is nothing to host, nothing to sign up for, and nothing that can go down.
 
 **Live demo:** https://malakmo7amed309.github.io/linkly/
 
@@ -8,7 +8,7 @@ A link shortener with no backend. The destination is packed into the short link 
 
 ## Standout feature
 
-Serverless links. `src/codec.js` compresses the URL with the browser's built-in `CompressionStream` (raw deflate), encodes it as base64url, and puts it after the `#/` in the page address. Opening that link unpacks it again in the browser. Long URLs with repeated query strings (UTM tags especially) come out noticeably shorter, and the app tells you honestly when a link would end up longer than the original.
+Serverless links. `src/codec.js` compresses the URL with the browser's built-in `CompressionStream` (raw deflate), encodes it as base64url, and puts it after the `#/` in the page address. Opening that link unpacks it again in the browser. Long addresses full of tracking tags come out shorter than the original. Short ones come out longer, because the link carries the whole address, and the app says so instead of pretending.
 
 ## What's inside
 
