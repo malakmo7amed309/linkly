@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'preact/hooks'
 import qrcode from 'qrcode-generator'
 import { pack, unpack, normalize, inspect } from './codec.js'
 
@@ -125,14 +125,14 @@ export default function App() {
           </div>
           <form onSubmit={shorten} className="brut p-5 bg-white">
             <label htmlFor="url" className="mono text-xs font-bold tracking-widest">PASTE A LONG LINK</label>
-            <input id="url" value={input} onChange={(e) => setInput(e.target.value)} placeholder="https://example.com/very/long/path?with=params" className="mono mt-2 w-full border-[3px] border-ink px-3 py-3 text-sm bg-paper outline-none focus:bg-lime/40" />
+            <input id="url" value={input} onInput={(e) => setInput(e.target.value)} placeholder="https://example.com/very/long/path?with=params" className="mono mt-2 w-full border-[3px] border-ink px-3 py-3 text-sm bg-paper outline-none focus:bg-lime/40" />
             <div className="mt-3 flex items-center justify-between gap-3 flex-wrap">
               <label className="flex items-center gap-2 text-sm font-bold cursor-pointer"><input type="checkbox" checked={utm} onChange={(e) => setUtm(e.target.checked)} className="h-4 w-4 accent-black" /> Add campaign tags (UTM)</label>
               <button type="button" onClick={() => { setInput(SAMPLE); setErr('') }} className="text-sm font-bold underline decoration-2">Try a sample</button>
             </div>
             {utm && (
               <div className="mt-3 grid grid-cols-3 gap-2">
-                {['source', 'medium', 'campaign'].map((k) => <input key={k} aria-label={'utm ' + k} placeholder={k} value={tags[k]} onChange={(e) => setTags({ ...tags, [k]: e.target.value })} className="mono min-w-0 border-2 border-ink px-2 py-2 text-xs bg-paper" />)}
+                {['source', 'medium', 'campaign'].map((k) => <input key={k} aria-label={'utm ' + k} placeholder={k} value={tags[k]} onInput={(e) => setTags({ ...tags, [k]: e.target.value })} className="mono min-w-0 border-2 border-ink px-2 py-2 text-xs bg-paper" />)}
               </div>
             )}
             {err && <p role="alert" className="mt-3 brut-sm bg-pink/40 p-2 text-sm font-bold">{err}</p>}
